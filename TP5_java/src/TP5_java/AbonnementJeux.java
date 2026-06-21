@@ -1,0 +1,51 @@
+package TP5_java;
+public class AbonnementJeux extends Abonnement {
+
+    private int nbJeuxInclus;      
+    private int heuresJeuParMois;  
+
+    public AbonnementJeux(String nom, double prixBase, int nbProfils,
+                               int nbJeuxInclus, int heuresJeuParMois) {
+        super(nom, prixBase, nbProfils);
+        this.nbJeuxInclus     = nbJeuxInclus ;
+        this.heuresJeuParMois = heuresJeuParMois;
+    }
+
+
+    public double calculerCoutMensuel() {
+        double cout = getPrixBase();
+
+        if (nbJeuxInclus > 50) {
+            cout = cout + 25;
+        }
+
+        if (heuresJeuParMois > 40) {
+            cout = cout + 15;
+        }
+
+        return cout;
+    }
+
+    public int calculerScoreSatisfaction() {
+        int score = 40;
+
+        if (nbJeuxInclus >= 30) {
+            score = score + 20;
+        }
+
+        if (heuresJeuParMois > 20) {
+            score = score + 20;
+        }
+
+        if (getNbProfils() >= 2) {
+            score = score + 10;
+        }
+
+        if (score > 100) {
+            score = 100;
+        }
+
+        return score;
+    }
+    
+}
